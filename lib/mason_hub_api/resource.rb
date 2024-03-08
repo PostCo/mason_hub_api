@@ -64,6 +64,8 @@ module MasonHubAPI
         params.map { |value| parse_body(value) }
       elsif params.is_a?(Hash)
         params.deep_transform_keys { |key| key.to_s.underscore }
+      else
+        params
       end
     end
 
