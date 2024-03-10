@@ -20,16 +20,15 @@ module MasonHubAPI
     #
     # Delete the registered callbacks
     #
-    # @param [Array] message_types An array of message types to delete.
-    # Available type: "skuInventoryChange", "orderEvent", "orderCancelResolution", "orderUpdateResolution", "rmaEvent", "inboundShipmentEvent", "snapshotReady"
+    # @param [Array] callback_ids The callback ids to delete
     #
-    # @return [Response] An array of deleted callbacks
+    # @return [Response] String response
     #
-    def delete(message_types)
-      message_types = [message_types] if message_types.is_a?(String)
-      raise ArgumentError, "message_types must be an array or string" unless message_types.is_a?(Array)
+    def delete(callback_ids)
+      callback_ids = [callback_ids] if callback_ids.is_a?(String)
+      raise ArgumentError, "callback_ids must be an array or string" unless callback_ids.is_a?(Array)
 
-      delete_request("callbacks", body: message_types).body
+      delete_request("callbacks", body: callback_ids).body
     end
   end
 end
